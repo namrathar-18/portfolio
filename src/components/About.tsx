@@ -10,7 +10,7 @@ const About = () => {
   const stats = [
     { icon: GraduationCap, label: 'Education', value: 'MCA @ CHRIST', color: 'text-neon-purple' },
     { icon: Award, label: 'Achievement', value: 'Gold Medalist', color: 'text-neon-yellow' },
-    { icon: Code, label: 'Focus', value: 'MERN Stack', color: 'text-neon-cyan' },
+    { icon: Code, label: 'Role', value: 'Full Stack Dev', color: 'text-neon-cyan' },
   ];
 
   return (
