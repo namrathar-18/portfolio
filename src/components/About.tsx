@@ -1,0 +1,94 @@
+import { motion } from 'framer-motion';
+import { useInView } from 'framer-motion';
+import { useRef } from 'react';
+import { GraduationCap, Award, Code } from 'lucide-react';
+
+const About = () => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
+
+  const stats = [
+    { icon: GraduationCap, label: 'Education', value: 'MCA @ CHRIST', color: 'text-neon-purple' },
+    { icon: Award, label: 'Achievement', value: 'Gold Medalist', color: 'text-neon-yellow' },
+    { icon: Code, label: 'Focus', value: 'MERN Stack', color: 'text-neon-cyan' },
+  ];
+
+  return (
+    <section id="about" className="section-padding relative overflow-hidden">
+      <div className="container mx-auto px-6" ref={ref}>
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.8 }}
+          className="text-center mb-16"
+        >
+          <h2 className="text-4xl md:text-5xl font-bold font-space mb-4">
+            About <span className="text-gradient">Me</span>
+          </h2>
+          <div className="w-24 h-1 bg-gradient-primary mx-auto rounded-full" />
+        </motion.div>
+
+        <div className="grid lg:grid-cols-2 gap-12 items-center">
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            animate={isInView ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="relative"
+          >
+            <div className="relative w-64 h-64 md:w-80 md:h-80 mx-auto">
+              <div className="absolute inset-0 bg-gradient-primary rounded-full blur-3xl opacity-30 animate-pulse" />
+              <div className="relative w-full h-full rounded-full bg-gradient-primary p-1">
+                <div className="w-full h-full rounded-full bg-background flex items-center justify-center">
+                  <span className="text-8xl">👩‍💻</span>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, x: 50 }}
+            animate={isInView ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="space-y-6"
+          >
+            <p className="text-lg text-muted-foreground leading-relaxed">
+              I'm a passionate <span className="text-neon-purple font-semibold">MCA student</span> at 
+              CHRIST University, Bangalore, with a strong foundation in computer applications. 
+              I graduated as a <span className="text-neon-yellow font-semibold">Gold Medalist</span> with 
+              94.37% in my Bachelor's degree from Presidency College.
+            </p>
+            <p className="text-lg text-muted-foreground leading-relaxed">
+              I specialize in <span className="text-neon-cyan font-semibold">MERN Stack development</span> and 
+              have hands-on experience building scalable web applications. My internship at 
+              EY Global Delivery Services enhanced my skills in full-stack development, 
+              where I built a comprehensive Spotify Clone.
+            </p>
+            <p className="text-lg text-muted-foreground leading-relaxed">
+              Beyond coding, I'm a <span className="text-neon-pink font-semibold">leader</span> who has 
+              headed multiple IT fests and a district-level throwball player. I believe in 
+              continuous learning and adapting to new technologies.
+            </p>
+
+            <div className="grid grid-cols-3 gap-4 pt-6">
+              {stats.map((stat, index) => (
+                <motion.div
+                  key={stat.label}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={isInView ? { opacity: 1, y: 0 } : {}}
+                  transition={{ duration: 0.5, delay: 0.6 + index * 0.1 }}
+                  className="glass p-4 rounded-xl text-center hover:glow-purple transition-all duration-300"
+                >
+                  <stat.icon className={`w-8 h-8 mx-auto mb-2 ${stat.color}`} />
+                  <p className="font-semibold text-sm">{stat.value}</p>
+                  <p className="text-xs text-muted-foreground">{stat.label}</p>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default About;
