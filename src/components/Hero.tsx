@@ -20,7 +20,7 @@ const Hero = () => {
             transition={{ duration: 0.5, delay: 0.5 }}
             className="inline-block mb-4 px-4 py-2 glass rounded-full"
           >
-            <span className="text-neon-cyan">✨ MCA Student & MERN Developer</span>
+            <span className="text-neon-cyan">✨ Full Stack Developer</span>
           </motion.div>
 
           <motion.h1
@@ -39,7 +39,7 @@ const Hero = () => {
             transition={{ duration: 0.8, delay: 0.9 }}
             className="text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto mb-8"
           >
-            Gold Medalist | Full Stack Developer | Building scalable web applications with{' '}
+            Gold Medalist | MCA @ CHRIST University | Building scalable web applications with{' '}
             <span className="text-neon-purple">MongoDB</span>,{' '}
             <span className="text-neon-cyan">Express</span>,{' '}
             <span className="text-neon-pink">React</span> &{' '}
