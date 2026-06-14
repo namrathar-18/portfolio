@@ -32,9 +32,11 @@ const Hero = () => {
           >
             <TypingEffect
               texts={[
-                'Pursuing MCA @ Christ (Deemed to be University)',
-                'Gold Medalist in BCA',
-                'Full Stack Developer',
+                'Technical Consultant Intern @ Adobe',
+                'Full Stack Developer — MERN + Redis + Docker',
+                'MCA @ CHRIST University | GPA 9.32',
+                'BCA Gold Medalist | GPA 9.54',
+                'Building scalable real-time systems 🚀',
               ]}
               speed={50}
               deleteSpeed={30}
