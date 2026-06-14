@@ -8,9 +8,9 @@ const About = () => {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   const stats = [
-    { icon: GraduationCap, label: 'Education', value: 'MCA @ CHRIST', color: 'text-neon-purple' },
-    { icon: Award, label: 'Achievement', value: 'Gold Medalist', color: 'text-neon-yellow' },
-    { icon: Code, label: 'Role', value: 'Full Stack Dev', color: 'text-neon-cyan' },
+    { icon: GraduationCap, label: 'MCA @ CHRIST', value: 'GPA 9.32', color: 'text-neon-purple' },
+    { icon: Award, label: 'BCA Gold Medalist', value: 'GPA 9.54', color: 'text-neon-yellow' },
+    { icon: Code, label: 'Intern @ Adobe', value: 'Tech Consultant', color: 'text-neon-cyan' },
   ];
 
   return (
@@ -62,14 +62,16 @@ const About = () => {
               9.5 GPA in my Bachelor's degree from Presidency College.
             </p>
             <p className="text-lg text-muted-foreground leading-relaxed">
-              I specialize in <span className="text-gradient font-semibold">Full Stack development</span> and 
-              have hands-on experience building scalable web applications. My internship at 
-              EY Global Delivery Services enhanced my skills in full-stack development, 
-              where I built a comprehensive music streaming application, Musify.
+              I specialize in <span className="text-gradient font-semibold">Full Stack development</span> and
+              system design — building scalable, production-grade applications. Currently working as a{' '}
+              <span className="text-gradient font-semibold">Technical Consultant Intern @ Adobe</span>.
+              Previously interned at EY Global Delivery Services, where I built Musify, a full-featured music streaming app.
             </p>
             <p className="text-lg text-muted-foreground leading-relaxed">
-              Beyond coding, I'm a <span className="text-gradient font-semibold">leader</span> who has 
-              headed multiple IT fests. I believe in continuous learning and adapting to new technologies.
+              I have deep interest in <span className="text-gradient font-semibold">real-time architectures</span>,{' '}
+              <span className="text-gradient font-semibold">distributed systems</span>, and backend engineering.
+              I've built production projects with Redis pub/sub, WebSockets, Docker, and JWT-based auth systems.
+              Beyond code, I've headed multiple college IT fests and thrive in leadership roles.
             </p>
 
             <div className="grid grid-cols-3 gap-4 pt-6">

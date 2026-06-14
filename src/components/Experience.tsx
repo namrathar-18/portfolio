@@ -6,10 +6,19 @@ import { Briefcase, GraduationCap, Trophy } from 'lucide-react';
 const experiences = [
   {
     type: 'work',
+    title: 'Technical Consultant Intern',
+    organization: 'Adobe',
+    period: 'June 2025 – Present',
+    description: 'Currently working as a Technical Consultant Intern at Adobe, contributing to enterprise-scale solutions and gaining deep exposure to product engineering practices at a world-class software company.',
+    icon: Briefcase,
+    color: 'neon-pink',
+  },
+  {
+    type: 'work',
     title: 'MERN Stack Intern',
     organization: 'EY Global Delivery Services',
     period: 'Dec 2024 – Jan 2025',
-    description: 'Completed a 6-week internship focused on MERN Stack development. Built a Spotify Clone with MongoDB, Express.js, React.js, Node.js, Clerk authentication, and Spotify API integration.',
+    description: 'Completed a 6-week internship focused on MERN Stack development. Built a Spotify Clone (Musify) with MongoDB, Express.js, React.js, Node.js, Clerk authentication, and Spotify API integration.',
     icon: Briefcase,
     color: 'neon-purple',
   },
