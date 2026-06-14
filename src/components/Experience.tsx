@@ -27,7 +27,7 @@ const experiences = [
     title: 'Bachelor in Computer Application',
     organization: 'Presidency College, Bangalore',
     period: 'Aug 2022 – May 2025',
-    description: 'Graduated with 94.37% as Gold Medalist. Strong foundation in programming, databases, and web development.',
+    description: 'Graduated with 9.5 GPA as Gold Medalist. Strong foundation in programming, databases, and web development',
     icon: Trophy,
     color: 'neon-yellow',
   },
@@ -66,8 +66,8 @@ const Experience = () => {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold font-space mb-4">
-            Experience & <span className="text-gradient-cyan">Education</span>
+          <h2 className="text-4xl md:text-5xl font-bold font-space mb-4 text-gradient-cyan">
+            Experience & Education
           </h2>
           <div className="w-24 h-1 bg-gradient-secondary mx-auto rounded-full" />
         </motion.div>

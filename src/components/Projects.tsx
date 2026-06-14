@@ -46,8 +46,8 @@ const Projects = () => {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold font-space mb-4">
-            Featured <span className="text-gradient">Projects</span>
+          <h2 className="text-4xl md:text-5xl font-bold font-space mb-4 text-gradient">
+            Featured Projects
           </h2>
           <div className="w-24 h-1 bg-gradient-primary mx-auto rounded-full" />
           <p className="text-muted-foreground mt-4 max-w-2xl mx-auto">
