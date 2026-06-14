@@ -83,6 +83,16 @@ const badgeColors: Record<string, string> = {
   '🥇 GOLD MEDAL': 'bg-neon-yellow/20 text-neon-yellow border-neon-yellow/40',
 };
 
+// Full static class strings so Tailwind's JIT compiler can detect them
+// (dynamically built `border-${color}` strings are never generated).
+const dotColors: Record<string, { border: string; text: string; ping: string }> = {
+  'neon-pink': { border: 'border-neon-pink', text: 'text-neon-pink', ping: 'bg-neon-pink/20' },
+  'neon-cyan': { border: 'border-neon-cyan', text: 'text-neon-cyan', ping: 'bg-neon-cyan/20' },
+  'neon-green': { border: 'border-neon-green', text: 'text-neon-green', ping: 'bg-neon-green/20' },
+  'neon-purple': { border: 'border-neon-purple', text: 'text-neon-purple', ping: 'bg-neon-purple/20' },
+  'neon-yellow': { border: 'border-neon-yellow', text: 'text-neon-yellow', ping: 'bg-neon-yellow/20' },
+};
+
 const Experience = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-100px' });
@@ -105,47 +115,39 @@ const Experience = () => {
           <p className="text-muted-foreground mt-4">My journey — most recent first</p>
         </motion.div>
 
-        <div className="relative max-w-4xl mx-auto">
-          {/* Timeline line */}
-          <div className="absolute left-6 md:left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-neon-pink via-neon-purple via-neon-cyan to-neon-yellow transform md:-translate-x-1/2" />
+        <div className="relative max-w-3xl mx-auto">
+          {/* Vertical rail — fixed left position, every card aligns to it */}
+          <div className="absolute left-5 sm:left-7 top-3 bottom-3 w-0.5 bg-gradient-to-b from-neon-pink via-neon-purple via-neon-cyan to-neon-yellow" />
 
           {experiences.map((exp, index) => (
             <motion.div
               key={exp.title + exp.period}
-              initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
+              initial={{ opacity: 0, x: 40 }}
               animate={isInView ? { opacity: 1, x: 0 } : {}}
-              transition={{ duration: 0.6, delay: index * 0.12 }}
-              className={`relative flex items-start mb-8 ${
-                index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'
-              }`}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              className="relative pl-16 sm:pl-20 pb-8 last:pb-0"
             >
-              {/* Timeline dot */}
-              <div className="absolute left-6 md:left-1/2 w-4 h-4 rounded-full bg-gradient-primary transform -translate-x-1/2 mt-7 z-10 flex-shrink-0">
-                <div className="absolute inset-0 rounded-full bg-gradient-primary animate-ping opacity-30" />
+              {/* Dot on the rail — colored icon node */}
+              <div className={`absolute left-5 sm:left-7 top-3 -translate-x-1/2 w-10 h-10 rounded-full bg-background border-2 ${dotColors[exp.color]?.border ?? 'border-primary'} flex items-center justify-center z-10`}>
+                <exp.icon className={`w-4 h-4 ${dotColors[exp.color]?.text ?? 'text-primary'}`} />
+                <div className={`absolute inset-0 rounded-full ${dotColors[exp.color]?.ping ?? 'bg-primary/20'} animate-ping opacity-40`} />
               </div>
 
-              {/* Content */}
-              <div className={`ml-16 md:ml-0 md:w-1/2 ${index % 2 === 0 ? 'md:pr-14' : 'md:pl-14'}`}>
-                <motion.div
-                  className="glass p-6 rounded-2xl hover:glow-purple transition-all duration-300 border border-border/50 hover:border-primary/40"
-                  whileHover={{ scale: 1.02, y: -2 }}
-                >
-                  <div className="flex items-center justify-between mb-3 flex-wrap gap-2">
-                    <div className="flex items-center gap-2">
-                      <div className={`p-2 rounded-lg bg-${exp.color}/10 border border-${exp.color}/20`}>
-                        <exp.icon className={`w-4 h-4 text-${exp.color}`} />
-                      </div>
-                      <span className="text-xs text-muted-foreground">{exp.period}</span>
-                    </div>
-                    <span className={`px-2 py-0.5 text-xs font-bold rounded-full border ${badgeColors[exp.badge] ?? 'bg-muted text-muted-foreground border-border'}`}>
-                      {exp.badge}
-                    </span>
-                  </div>
-                  <h3 className="text-lg font-bold font-space mb-1">{exp.title}</h3>
-                  <p className="text-neon-cyan text-sm font-medium mb-2">{exp.organization}</p>
-                  <p className="text-muted-foreground text-sm leading-relaxed">{exp.description}</p>
-                </motion.div>
-              </div>
+              {/* Card */}
+              <motion.div
+                className="glass p-5 sm:p-6 rounded-2xl border border-border/50 hover:border-primary/40 hover:glow-purple transition-all duration-300"
+                whileHover={{ scale: 1.01, x: 4 }}
+              >
+                <div className="flex items-center justify-between mb-2 flex-wrap gap-2">
+                  <span className="text-xs text-muted-foreground font-medium">{exp.period}</span>
+                  <span className={`px-2.5 py-0.5 text-xs font-bold rounded-full border ${badgeColors[exp.badge] ?? 'bg-muted text-muted-foreground border-border'}`}>
+                    {exp.badge}
+                  </span>
+                </div>
+                <h3 className="text-lg font-bold font-space mb-1">{exp.title}</h3>
+                <p className="text-neon-cyan text-sm font-medium mb-2">{exp.organization}</p>
+                <p className="text-muted-foreground text-sm leading-relaxed">{exp.description}</p>
+              </motion.div>
             </motion.div>
           ))}
         </div>
