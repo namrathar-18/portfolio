@@ -22,8 +22,8 @@ const About = () => {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold font-space mb-4">
-            About <span className="text-gradient">Me</span>
+          <h2 className="text-4xl md:text-5xl font-bold font-space mb-4 text-gradient">
+            About Me
           </h2>
           <div className="w-24 h-1 bg-gradient-primary mx-auto rounded-full" />
         </motion.div>
@@ -39,7 +39,11 @@ const About = () => {
               <div className="absolute inset-0 bg-gradient-primary rounded-full blur-3xl opacity-30 animate-pulse" />
               <div className="relative w-full h-full rounded-full bg-gradient-primary p-1">
                 <div className="w-full h-full rounded-full bg-background flex items-center justify-center">
-                  <span className="text-8xl">👩‍💻</span>
+                  <img
+                    src="/profile.png"
+                    alt="Profile"
+                    className="w-full h-full rounded-full object-cover"
+                  />
                 </div>
               </div>
             </div>
@@ -52,21 +56,20 @@ const About = () => {
             className="space-y-6"
           >
             <p className="text-lg text-muted-foreground leading-relaxed">
-              I'm a passionate <span className="text-neon-purple font-semibold">MCA student</span> at 
+              I'm pursuing <span className="text-gradient font-semibold">MCA</span> at 
               CHRIST University, Bangalore, with a strong foundation in computer applications. 
-              I graduated as a <span className="text-neon-yellow font-semibold">Gold Medalist</span> with 
-              94.37% in my Bachelor's degree from Presidency College.
+              I graduated as a <span className="text-gradient font-semibold">Gold Medalist</span> with 
+              9.5 GPA in my Bachelor's degree from Presidency College.
             </p>
             <p className="text-lg text-muted-foreground leading-relaxed">
-              I specialize in <span className="text-neon-cyan font-semibold">MERN Stack development</span> and 
+              I specialize in <span className="text-gradient font-semibold">Full Stack development</span> and 
               have hands-on experience building scalable web applications. My internship at 
               EY Global Delivery Services enhanced my skills in full-stack development, 
-              where I built a comprehensive Spotify Clone.
+              where I built a comprehensive music streaming application, Musify.
             </p>
             <p className="text-lg text-muted-foreground leading-relaxed">
-              Beyond coding, I'm a <span className="text-neon-pink font-semibold">leader</span> who has 
-              headed multiple IT fests and a district-level throwball player. I believe in 
-              continuous learning and adapting to new technologies.
+              Beyond coding, I'm a <span className="text-gradient font-semibold">leader</span> who has 
+              headed multiple IT fests. I believe in continuous learning and adapting to new technologies.
             </p>
 
             <div className="grid grid-cols-3 gap-4 pt-6">

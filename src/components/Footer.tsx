@@ -11,8 +11,7 @@ const Footer = () => {
             whileInView={{ opacity: 1 }}
             className="text-muted-foreground text-sm flex items-center gap-2"
           >
-            © 2025 Namratha R. Made with{' '}
-            <Heart className="w-4 h-4 text-neon-pink fill-neon-pink" /> and MERN Stack
+            © 2026 Namratha R.
           </motion.p>
 
           <motion.p

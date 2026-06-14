@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
+import websiteLogo from '/Website Logo.png';
 
 const navLinks = [
   { name: 'Home', href: '#home' },
@@ -25,10 +26,13 @@ const Navbar = () => {
         <div className="flex items-center justify-between">
           <motion.a
             href="#home"
-            className="text-2xl font-bold font-space text-gradient"
             whileHover={{ scale: 1.05 }}
           >
-            NR
+            <img
+              src={websiteLogo}
+              alt="Namratha R"
+              className="h-16 w-16"
+            />
           </motion.a>
 
           {/* Desktop Menu */}
@@ -37,7 +41,7 @@ const Navbar = () => {
               <motion.a
                 key={link.name}
                 href={link.href}
-                className="text-muted-foreground hover:text-foreground transition-colors relative group"
+                className="text-foreground hover:text-neon-cyan transition-colors relative group font-semibold"
                 whileHover={{ y: -2 }}
               >
                 {link.name}
@@ -69,7 +73,7 @@ const Navbar = () => {
                   <motion.a
                     key={link.name}
                     href={link.href}
-                    className="text-muted-foreground hover:text-foreground transition-colors"
+                    className="text-foreground hover:text-neon-cyan transition-colors font-semibold"
                     onClick={() => setIsOpen(false)}
                     whileHover={{ x: 10 }}
                   >

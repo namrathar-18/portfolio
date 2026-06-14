@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import Scene3D from './Scene3D';
+import TypingEffect from './TypingEffect';
 import { Github, Linkedin, Mail, ChevronDown } from 'lucide-react';
 
 const Hero = () => {
@@ -14,36 +15,31 @@ const Hero = () => {
           transition={{ duration: 0.8, delay: 0.2 }}
           className="text-center"
         >
-          <motion.div
-            initial={{ scale: 0 }}
-            animate={{ scale: 1 }}
-            transition={{ duration: 0.5, delay: 0.5 }}
-            className="inline-block mb-4 px-4 py-2 glass rounded-full"
-          >
-            <span className="text-neon-cyan">✨ Full Stack Developer</span>
-          </motion.div>
-
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.7 }}
-            className="text-5xl md:text-7xl lg:text-8xl font-bold font-space mb-6"
+            transition={{ duration: 0.8, delay: 0.5 }}
+            className="text-5xl md:text-7xl lg:text-8xl font-bold font-space mb-6 text-gradient"
           >
-            Hi, I'm{' '}
-            <span className="text-gradient">Namratha R</span>
+            Hi, I'm Namratha R
           </motion.h1>
 
           <motion.p
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.9 }}
-            className="text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto mb-8"
+            className="text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto mb-8 min-h-16"
           >
-            Gold Medalist | MCA @ CHRIST University | Building scalable web applications with{' '}
-            <span className="text-neon-purple">MongoDB</span>,{' '}
-            <span className="text-neon-cyan">Express</span>,{' '}
-            <span className="text-neon-pink">React</span> &{' '}
-            <span className="text-neon-green">Node.js</span>
+            <TypingEffect
+              texts={[
+                'Pursuing MCA @ Christ (Deemed to be University)',
+                'Gold Medalist in BCA',
+                'Full Stack Developer',
+              ]}
+              speed={50}
+              deleteSpeed={30}
+              delay={2000}
+            />
           </motion.p>
 
           <motion.div
@@ -53,17 +49,17 @@ const Hero = () => {
             className="flex items-center justify-center gap-6 mb-12"
           >
             <motion.a
-              href="https://github.com"
+              href="https://github.com/namrathar-18/"
               target="_blank"
               rel="noopener noreferrer"
-              className="p-3 glass rounded-full hover:glow-purple transition-all duration-300"
+              className="p-3 glass rounded-full hover:glow-cyan transition-all duration-300"
               whileHover={{ scale: 1.1, y: -5 }}
               whileTap={{ scale: 0.95 }}
             >
               <Github className="w-6 h-6" />
             </motion.a>
             <motion.a
-              href="https://linkedin.com/in/namrathar18/"
+              href="https://www.linkedin.com/in/namratharp18/"
               target="_blank"
               rel="noopener noreferrer"
               className="p-3 glass rounded-full hover:glow-cyan transition-all duration-300"
@@ -73,8 +69,8 @@ const Hero = () => {
               <Linkedin className="w-6 h-6" />
             </motion.a>
             <motion.a
-              href="mailto:namratha.r@mca.christuniversity.in"
-              className="p-3 glass rounded-full hover:glow-pink transition-all duration-300"
+              href="mailto:namrp.18@gmail.com"
+              className="p-3 glass rounded-full hover:glow-cyan transition-all duration-300"
               whileHover={{ scale: 1.1, y: -5 }}
               whileTap={{ scale: 0.95 }}
             >
@@ -90,7 +86,7 @@ const Hero = () => {
           >
             <motion.a
               href="#projects"
-              className="px-8 py-4 bg-gradient-primary rounded-full font-semibold text-primary-foreground hover:glow-purple transition-all duration-300"
+              className="px-8 py-4 bg-gradient-primary rounded-full font-semibold text-white hover:glow-purple transition-all duration-300"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
@@ -98,7 +94,7 @@ const Hero = () => {
             </motion.a>
             <motion.a
               href="#contact"
-              className="px-8 py-4 glass rounded-full font-semibold hover:bg-muted/50 transition-all duration-300"
+              className="px-8 py-4 glass rounded-full font-semibold text-white hover:bg-muted/50 transition-all duration-300"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
