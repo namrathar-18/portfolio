@@ -13,10 +13,15 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // MongoDB Connection
+// Credentials are passed separately (not in the URI) so passwords containing
+// special characters like '@' don't break URI parsing.
 mongoose
-  .connect(process.env.MONGO_URI)
+  .connect(process.env.MONGO_URI, {
+    user: process.env.MONGO_USER,
+    pass: process.env.MONGO_PASS,
+  })
   .then(() => console.log('MongoDB connected'))
-  .catch((err) => console.error('MongoDB connection error:', err));
+  .catch((err) => console.error('MongoDB connection error:', err.message));
 
 // Routes
 app.use('/api/contacts', contactRoutes);
