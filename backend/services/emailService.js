@@ -1,12 +1,20 @@
 const nodemailer = require('nodemailer');
 
+// Use explicit Gmail SMTP settings to avoid Render/Gmail transport timeouts
 const transporter = nodemailer.createTransport({
-  service: 'gmail',
+  host: 'smtp.gmail.com',
+  port: 465,
+  secure: true, // SSL
   auth: {
     user: process.env.EMAIL_USER,
     pass: process.env.EMAIL_PASSWORD,
   },
+  tls: {
+    // Allow Render environment to negotiate successfully
+    rejectUnauthorized: false,
+  },
 });
+
 
 const sendContactEmail = async (contactData) => {
   try {
