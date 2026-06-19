@@ -10,7 +10,7 @@ const transporter = nodemailer.createTransport({
 
 const sendContactEmail = async (contactData) => {
   try {
-    // Email to me (admin)
+    // Email to admin only (portfolio owner)
     await transporter.sendMail({
       from: process.env.EMAIL_USER,
       to: process.env.EMAIL_TO,
@@ -20,21 +20,8 @@ const sendContactEmail = async (contactData) => {
         <p><strong>Name:</strong> ${contactData.name}</p>
         <p><strong>Email:</strong> ${contactData.email}</p>
         <p><strong>Message:</strong></p>
-        <p>${contactData.message.replace(/\n/g, '<br>')}</p>
+        <p>${String(contactData.message).replace(/\n/g, '<br>')}</p>
         <p><em>Submitted on: ${new Date().toLocaleString()}</em></p>
-      `,
-    });
-
-    // Confirmation email to user
-    await transporter.sendMail({
-      from: process.env.EMAIL_USER,
-      to: contactData.email,
-      subject: 'We received your message - Namratha R',
-      html: `
-        <h2>Thank you for reaching out!</h2>
-        <p>Hi ${contactData.name},</p>
-        <p>Thank you for your message. I'll get back to you as soon as possible.</p>
-        <p>Best regards,<br>Namratha R</p>
       `,
     });
 
@@ -45,3 +32,4 @@ const sendContactEmail = async (contactData) => {
 };
 
 module.exports = { sendContactEmail };
+
