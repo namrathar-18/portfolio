@@ -33,12 +33,20 @@ router.post('/', async (req, res) => {
 
     await contact.save();
 
-    // Send email
+    // Send email (admin only)
     try {
       await sendContactEmail(contact);
     } catch (emailError) {
-      console.error('Email sending failed:', emailError.message);
-      // Don't fail the request if email fails, but log it
+      console.error('Email sending failed:', {
+        message: emailError.message,
+        to: process.env.EMAIL_TO,
+      });
+
+      // DB saved, but email failed => inform frontend
+      return res.status(500).json({
+        success: false,
+        error: 'Message saved, but email failed to send.',
+      });
     }
 
     res.status(201).json({
