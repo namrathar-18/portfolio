@@ -13,10 +13,11 @@ cp .env.example .env
 ```
 MONGO_URI=mongodb://localhost:27017/portfolio
 PORT=5000
-EMAIL_USER=your_gmail@gmail.com
-EMAIL_PASSWORD=your_app_password
-EMAIL_TO=your_email@gmail.com
+EMAIL_USER=jasminchopda540@gmail.com
+EMAIL_PASSWORD=your_app_password  # use a Google App Password
+EMAIL_TO=jasminchopda540@gmail.com
 ```
+
 
 3. Install dependencies:
 ```bash
@@ -27,6 +28,12 @@ npm install
 ```bash
 npm run dev
 ```
+
+## Test locally
+- Open the frontend (usually http://localhost:5173)
+- Submit the contact form
+- Backend will save the message to MongoDB and send emails via Gmail
+
 
 ## API Endpoints
 
@@ -77,4 +84,5 @@ Delete a contact message.
    - Go to https://myaccount.google.com/apppasswords
    - Select "Mail" and "Windows Computer"
    - Copy the generated 16-character password
-3. Use this password in your `.env` file as `EMAIL_PASSWORD`
+3. Use this password in your `.env` file as `EMAIL_PASSWORD` (replace `PLEASE_SET_APP_PASSWORD`)
+

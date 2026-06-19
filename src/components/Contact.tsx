@@ -4,7 +4,9 @@ import { useRef, useState } from 'react';
 import { Mail, Phone, MapPin, Send, Linkedin, Github } from 'lucide-react';
 import { Toaster, toast } from 'sonner';
 
-const API_URL = 'http://localhost:5000/api';
+const API_URL = import.meta.env.VITE_API_URL ?? 'http://localhost:5000/api';
+
+
 
 const Contact = () => {
   const ref = useRef(null);
