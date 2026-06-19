@@ -37,9 +37,14 @@ router.post('/', async (req, res) => {
     try {
       await sendContactEmail(contact);
     } catch (emailError) {
-      console.error('Email sending failed:', {
-        message: emailError.message,
-        to: process.env.EMAIL_TO,
+      // Log the raw nodemailer error without exposing secrets
+      console.error('Email sending failed (raw):', emailError);
+
+      console.error('Mailer env check:', {
+        EMAIL_USER_set: !!process.env.EMAIL_USER,
+        EMAIL_TO_set: !!process.env.EMAIL_TO,
+        EMAIL_PASSWORD_set: !!process.env.EMAIL_PASSWORD,
+        EMAIL_TO_value: process.env.EMAIL_TO,
       });
 
       // DB saved, but email failed => inform frontend
@@ -48,6 +53,7 @@ router.post('/', async (req, res) => {
         error: 'Message saved, but email failed to send.',
       });
     }
+
 
     res.status(201).json({
       success: true,
