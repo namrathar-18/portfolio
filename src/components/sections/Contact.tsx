@@ -9,9 +9,11 @@ const API_URL = import.meta.env.VITE_API_URL as string | undefined;
 
 /**
  * Serverless email delivery — messages land directly in the inbox.
- * The custom backend (VITE_API_URL) takes priority when configured.
+ * The +portfolio alias keeps the FormSubmit form record separate while
+ * delivering to the same mailbox. The custom backend (VITE_API_URL)
+ * takes priority when configured.
  */
-const FORMSUBMIT_ENDPOINT = `https://formsubmit.co/ajax/${"namrp.18@gmail.com"}`;
+const FORMSUBMIT_ENDPOINT = `https://formsubmit.co/ajax/${"namrp.18+portfolio@gmail.com"}`;
 
 const contactInfo = [
   { icon: Mail, label: "Email", value: profile.email, href: `mailto:${profile.email}` },
