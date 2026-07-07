@@ -1,22 +1,40 @@
-import Navbar from '../components/Navbar';
-import Hero from '../components/Hero';
-import About from '../components/About';
-import Skills from '../components/Skills';
-import Projects from '../components/Projects';
-import Experience from '../components/Experience';
-import Contact from '../components/Contact';
-import Footer from '../components/Footer';
+import { Navbar } from "@/components/layout/Navbar";
+import { Footer } from "@/components/layout/Footer";
+import { Hero } from "@/components/sections/Hero";
+import { About } from "@/components/sections/About";
+import { Skills } from "@/components/sections/Skills";
+import { Experience } from "@/components/sections/Experience";
+import { Projects } from "@/components/sections/Projects";
+import { Research } from "@/components/sections/Research";
+import { Education } from "@/components/sections/Education";
+import { Achievements } from "@/components/sections/Achievements";
+import { Certifications } from "@/components/sections/Certifications";
+import { GitHubActivity } from "@/components/sections/GitHubActivity";
+import { Contact } from "@/components/sections/Contact";
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
+    <div className="min-h-screen overflow-x-hidden bg-background text-foreground">
+      <a
+        href="#main"
+        className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[60] focus:rounded-full focus:bg-accent focus:px-4 focus:py-2 focus:text-sm focus:text-accent-foreground"
+      >
+        Skip to content
+      </a>
       <Navbar />
-      <Hero />
-      <About />
-      <Skills />
-      <Projects />
-      <Experience />
-      <Contact />
+      <main id="main">
+        <Hero />
+        <About />
+        <Skills />
+        <Experience />
+        <Projects />
+        <Research />
+        <Education />
+        <Achievements />
+        <Certifications />
+        <GitHubActivity />
+        <Contact />
+      </main>
       <Footer />
     </div>
   );

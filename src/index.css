@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -6,53 +6,37 @@
 
 @layer base {
   :root {
-    --background: 260 20% 5%;
-    --foreground: 0 0% 98%;
-
-    --card: 260 25% 8%;
+    /* Premium dark palette */
+    --background: 0 0% 5%;            /* #0D0D0D */
+    --background-secondary: 0 0% 7%;  /* #111111 */
+    --card: 0 0% 10%;                 /* #1A1A1A */
     --card-foreground: 0 0% 98%;
+    --surface: 0 0% 13%;              /* #202020 */
 
-    --popover: 260 25% 8%;
+    --foreground: 0 0% 98%;
+    --muted: 0 0% 13%;
+    --muted-foreground: 0 0% 62%;
+
+    /* Single accent — electric blue */
+    --accent: 219 100% 64%;           /* #478CFF */
+    --accent-soft: 219 100% 72%;
+    --accent-foreground: 0 0% 100%;
+
+    --primary: 219 100% 64%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 0 0% 13%;
+    --secondary-foreground: 0 0% 98%;
+
+    --popover: 0 0% 8%;
     --popover-foreground: 0 0% 98%;
-
-    --primary: 280 100% 70%;
-    --primary-foreground: 260 20% 5%;
-
-    --secondary: 190 100% 50%;
-    --secondary-foreground: 260 20% 5%;
-
-    --muted: 260 20% 15%;
-    --muted-foreground: 260 10% 60%;
-
-    --accent: 320 100% 60%;
-    --accent-foreground: 0 0% 98%;
-
-    --destructive: 0 84% 60%;
+    --destructive: 0 72% 55%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 260 30% 20%;
-    --input: 260 30% 20%;
-    --ring: 280 100% 70%;
+    --border: 0 0% 100% / 0.08;
+    --input: 0 0% 100% / 0.1;
+    --ring: 219 100% 64%;
 
-    --radius: 0.75rem;
-
-    /* Custom vibrant colors */
-    --neon-purple: 280 100% 70%;
-    --neon-pink: 320 100% 60%;
-    --neon-cyan: 190 100% 50%;
-    --neon-yellow: 50 100% 60%;
-    --neon-green: 150 100% 50%;
-
-    /* Gradients */
-    --gradient-primary: linear-gradient(135deg, hsl(280 100% 70%), hsl(320 100% 60%));
-    --gradient-secondary: linear-gradient(135deg, hsl(190 100% 50%), hsl(150 100% 50%));
-    --gradient-accent: linear-gradient(135deg, hsl(320 100% 60%), hsl(50 100% 60%));
-    --gradient-hero: linear-gradient(180deg, hsl(260 20% 5%) 0%, hsl(280 30% 10%) 50%, hsl(260 20% 5%) 100%);
-  }
-
-  .dark {
-    --background: 260 20% 5%;
-    --foreground: 0 0% 98%;
+    --radius: 1rem;
   }
 }
 
@@ -61,83 +45,101 @@
     @apply border-border;
   }
 
-  body {
-    @apply bg-background text-foreground font-outfit;
-    font-feature-settings: "rlig" 1, "calt" 1;
-    background: radial-gradient(circle at 20% 30%, rgba(168, 85, 247, 0.2) 0%, transparent 50%),
-                radial-gradient(circle at 80% 70%, rgba(0, 204, 204, 0.2) 0%, transparent 50%),
-                radial-gradient(circle at 50% 10%, rgba(236, 72, 153, 0.15) 0%, transparent 50%),
-                radial-gradient(circle at 10% 90%, rgba(34, 197, 94, 0.15) 0%, transparent 50%),
-                linear-gradient(135deg, #0a0515 0%, #1a0b2e 50%, #0f172a 100%);
-    background-attachment: fixed;
-    position: relative;
+  html {
+    /* Lenis owns scrolling; native smooth-behavior would fight its lerp */
+    -webkit-font-smoothing: antialiased;
   }
 
-  body::before {
-    content: '';
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: 
-      repeating-linear-gradient(90deg, rgba(168, 85, 247, 0.03) 0px, transparent 1px, transparent 80px, rgba(168, 85, 247, 0.03) 81px),
-      repeating-linear-gradient(0deg, rgba(0, 204, 204, 0.03) 0px, transparent 1px, transparent 80px, rgba(0, 204, 204, 0.03) 81px);
-    pointer-events: none;
-    z-index: 0;
+  html.lenis {
+    height: auto;
+  }
+
+  .lenis.lenis-smooth {
+    scroll-behavior: auto;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans;
+    font-feature-settings: 'rlig' 1, 'calt' 1;
+  }
+
+  ::selection {
+    background: hsl(var(--accent) / 0.3);
   }
 
   h1, h2, h3, h4, h5, h6 {
-    @apply font-space;
+    @apply font-display;
+  }
+
+  :focus-visible {
+    outline: 2px solid hsl(var(--accent));
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
   }
 }
 
 @layer utilities {
-  .text-gradient {
-    @apply bg-clip-text text-transparent;
-    background-image: var(--gradient-primary);
-  }
-
-  .text-gradient-cyan {
-    @apply bg-clip-text text-transparent;
-    background-image: var(--gradient-secondary);
-  }
-
-  .bg-gradient-primary {
-    background-image: var(--gradient-primary);
-  }
-
-  .bg-gradient-secondary {
-    background-image: var(--gradient-secondary);
-  }
-
-  .bg-gradient-accent {
-    background-image: var(--gradient-accent);
-  }
-
-  .glow-purple {
-    box-shadow: 0 0 20px hsl(var(--neon-purple) / 0.5), 
-                0 0 40px hsl(var(--neon-purple) / 0.3),
-                0 0 60px hsl(var(--neon-purple) / 0.1);
-  }
-
-  .glow-cyan {
-    box-shadow: 0 0 20px hsl(var(--neon-cyan) / 0.5), 
-                0 0 40px hsl(var(--neon-cyan) / 0.3),
-                0 0 60px hsl(var(--neon-cyan) / 0.1);
-  }
-
-  .glow-pink {
-    box-shadow: 0 0 20px hsl(var(--neon-pink) / 0.5), 
-                0 0 40px hsl(var(--neon-pink) / 0.3),
-                0 0 60px hsl(var(--neon-pink) / 0.1);
-  }
-
+  /* Frosted glass card */
   .glass {
-    @apply backdrop-blur-xl bg-card/30 border border-border/50;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.01));
+    @apply backdrop-blur-xl border border-white/[0.08];
+  }
+
+  .glass-strong {
+    background: rgba(17, 17, 17, 0.72);
+    @apply backdrop-blur-2xl border border-white/[0.08];
+  }
+
+  /* Accent text */
+  .text-accent-gradient {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, hsl(var(--accent-soft)), hsl(var(--accent)));
+  }
+
+  /* Subtle heading shine */
+  .text-shine {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(180deg, #ffffff 0%, rgba(255, 255, 255, 0.72) 100%);
+  }
+
+  .glow-accent {
+    box-shadow:
+      0 0 24px hsl(var(--accent) / 0.35),
+      0 0 64px hsl(var(--accent) / 0.15);
+  }
+
+  .glow-accent-sm {
+    box-shadow: 0 0 16px hsl(var(--accent) / 0.25);
+  }
+
+  /* Elevated card shadow */
+  .shadow-premium {
+    box-shadow:
+      0 1px 0 rgba(255, 255, 255, 0.06) inset,
+      0 24px 48px -12px rgba(0, 0, 0, 0.55);
   }
 
   .section-padding {
-    @apply py-20 md:py-32;
+    @apply py-24 md:py-32;
+  }
+
+  /* Faint dotted grid backdrop */
+  .bg-dot-grid {
+    background-image: radial-gradient(rgba(255, 255, 255, 0.055) 1px, transparent 1px);
+    background-size: 28px 28px;
+  }
+
+  /* Radial accent halo for section backgrounds */
+  .bg-halo {
+    background: radial-gradient(ellipse 60% 45% at 50% 0%, hsl(var(--accent) / 0.09), transparent 70%);
   }
 }
