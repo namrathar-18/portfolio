@@ -15,16 +15,16 @@ export const experience: ExperienceItem[] = [
   {
     title: "Technical Consultant Intern",
     organization: "Adobe",
-    period: "Apr 2026 — Present",
+    period: "Apr 2026 — Jun 2026",
     description:
-      "Working on enterprise-grade product solutions with cross-functional teams, with hands-on exposure to how software is engineered, consulted on, and shipped at scale.",
+      "Worked on enterprise-grade product solutions with cross-functional teams, with hands-on exposure to how software is engineered, consulted on, and shipped at scale.",
     points: [
-      "Contribute to enterprise product solution engineering",
-      "Collaborate across consulting, engineering, and customer teams",
-      "Operate inside world-class delivery and code-quality practices",
+      "Contributed to enterprise product solution engineering",
+      "Collaborated across consulting, engineering, and customer teams",
+      "Operated inside world-class delivery and code-quality practices",
     ],
     icon: Briefcase,
-    badge: "Current",
+    badge: "Internship",
   },
   {
     title: "Master of Computer Applications",

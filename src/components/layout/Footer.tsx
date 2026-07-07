@@ -4,7 +4,7 @@ import { profile } from "@/data/profile";
 const quickLinks = [
   { name: "About", href: "#about" },
   { name: "Projects", href: "#projects" },
-  { name: "Research", href: "#research" },
+  { name: "Education", href: "#education" },
   { name: "Contact", href: "#contact" },
 ];
 

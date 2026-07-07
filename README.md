@@ -25,8 +25,8 @@ A single-page portfolio designed around a luxury dark theme (`#0D0D0D`) with a s
 - **Three.js hero** — additive-blended particle constellation with a breathing wireframe sphere and cursor-parallax camera, lazy-loaded off the critical bundle
 - **Live GitHub integration** — repositories, language distribution, and a year of contributions fetched from the GitHub API at runtime
 - **Lenis smooth scrolling** with anchor handling, plus scroll-triggered reveals via Framer Motion
-- **Five flagship projects** — FleetTwin 3D, RepoVerse 3D, FraudMesh, the Real-Time Messaging Platform, and Musify, each with architecture and challenge → solution breakdowns, live-demo and source buttons
-- **Full section set** — About, Skills, Experience, Projects, Research, Education, Achievements, Certifications, Contact, plus a scroll progress bar, tech marquee, cursor-spotlight cards, and film-grain finish
+- **Five flagship projects** — [FleetTwin 3D](https://github.com/namrathar-18/fleettwin), [RepoVerse 3D](https://github.com/namrathar-18/repoverse), [FraudMesh](https://github.com/namrathar-18/fraudmesh), the [Real-Time Messaging Platform](https://github.com/namrathar-18/messaging-platform), and [Musify](https://github.com/namrathar-18/musify) — each with architecture and challenge → solution breakdowns, live-demo and source buttons
+- **Full section set** — About, Skills, Experience & Education timeline, Projects, Education, Achievements, Contact, plus a scroll progress bar, tech marquee, cursor-spotlight cards, and film-grain finish
 - **Accessibility** — semantic landmarks, skip link, keyboard focus rings, ARIA labels, and full `prefers-reduced-motion` support (the 3D scene renders a static fallback)
 - **Performance** — code-split Three.js chunk, lazy images, preconnected origins, 11 runtime dependencies total
 - **Responsive** — mobile through ultra-wide with zero horizontal overflow
@@ -84,8 +84,8 @@ src/
 ├── components/
 │   ├── layout/       # Navbar, Footer
 │   ├── motion/       # Reveal, SectionHeading, MagneticButton, Typewriter
-│   ├── sections/     # Hero, About, Skills, Experience, Projects, Research,
-│   │                 # Education, Achievements, Certifications, GitHubActivity, Contact
+│   ├── sections/     # Hero, About, Skills, Experience, Projects,
+│   │                 # Education, Achievements, GitHubActivity, Contact
 │   └── three/        # HeroScene (particle field, wireframe sphere, camera rig)
 ├── data/             # All site content as typed modules — edit these to update the site
 ├── hooks/            # use-lenis, use-github-stats, use-active-section, use-reduced-motion

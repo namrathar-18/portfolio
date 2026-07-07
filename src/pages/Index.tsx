@@ -7,10 +7,8 @@ import { About } from "@/components/sections/About";
 import { Skills } from "@/components/sections/Skills";
 import { Experience } from "@/components/sections/Experience";
 import { Projects } from "@/components/sections/Projects";
-import { Research } from "@/components/sections/Research";
 import { Education } from "@/components/sections/Education";
 import { Achievements } from "@/components/sections/Achievements";
-import { Certifications } from "@/components/sections/Certifications";
 import { GitHubActivity } from "@/components/sections/GitHubActivity";
 import { Contact } from "@/components/sections/Contact";
 
@@ -32,10 +30,8 @@ const Index = () => {
         <Skills />
         <Experience />
         <Projects />
-        <Research />
         <Education />
         <Achievements />
-        <Certifications />
         <GitHubActivity />
         <Contact />
       </main>
