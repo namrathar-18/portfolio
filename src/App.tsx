@@ -13,7 +13,10 @@ const App = () => {
   return (
     <QueryClientProvider client={queryClient}>
       <Toaster theme="dark" position="bottom-right" />
-      <BrowserRouter future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
+      <BrowserRouter
+        basename={import.meta.env.BASE_URL.replace(/\/$/, "")}
+        future={{ v7_startTransition: true, v7_relativeSplatPath: true }}
+      >
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="*" element={<NotFound />} />

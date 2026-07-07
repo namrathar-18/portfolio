@@ -10,7 +10,7 @@
 [![Three.js](https://img.shields.io/badge/Three.js-r160-000000?logo=threedotjs&logoColor=white&labelColor=0D0D0D)](https://threejs.org)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind-3-06B6D4?logo=tailwindcss&logoColor=white&labelColor=0D0D0D)](https://tailwindcss.com)
 
-[Live Demo](https://namratha-r.vercel.app) · [GitHub](https://github.com/namrathar-18) · [LinkedIn](https://www.linkedin.com/in/namratharp18/)
+[Live Site](https://namrathar-18.github.io/portfolio/) · [GitHub](https://github.com/namrathar-18) · [LinkedIn](https://www.linkedin.com/in/namratharp18/)
 
 </div>
 
@@ -100,12 +100,11 @@ src/
 3. **GitHub account** — update `githubUsername` in `src/data/profile.ts`
 4. **3D scene** — tune particle count, colors, and motion in `src/components/three/HeroScene.tsx`
 
-## ☁️ Deployment (Vercel)
+## ☁️ Deployment
 
-1. Push the repository to GitHub
-2. Import it at [vercel.com/new](https://vercel.com/new) — Vite is auto-detected
-3. (Optional) add `VITE_API_URL` under Project → Settings → Environment Variables
-4. Deploy — every push to `main` redeploys automatically
+**GitHub Pages (live now):** every push to `main` triggers `.github/workflows/deploy.yml`, which builds the site and publishes it to [namrathar-18.github.io/portfolio](https://namrathar-18.github.io/portfolio/).
+
+**Vercel (alternative):** import the repo at [vercel.com/new](https://vercel.com/new) — Vite is auto-detected and no base-path changes are needed (the Pages base only applies when `GITHUB_PAGES=true`).
 
 ## 📄 License
 

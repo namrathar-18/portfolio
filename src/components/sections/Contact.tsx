@@ -47,6 +47,8 @@ export function Contact() {
               _subject: `Portfolio contact from ${formData.name}`,
               _template: "table",
               _captcha: "false",
+              _autoresponse:
+                "Hi — thanks for reaching out! I've received your message and will get back to you soon. — Namratha R",
             }),
           });
 

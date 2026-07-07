@@ -1,5 +1,5 @@
 import type { LucideIcon } from "lucide-react";
-import { Briefcase, Cpu, Star } from "lucide-react";
+import { Briefcase, Cpu, GraduationCap, Star, Trophy } from "lucide-react";
 
 export interface ExperienceItem {
   title: string;
@@ -8,7 +8,7 @@ export interface ExperienceItem {
   description: string;
   points?: string[];
   icon: LucideIcon;
-  badge: "Current" | "Internship" | "Leadership";
+  badge: "Current" | "Internship" | "Leadership" | "Education" | "Gold Medal";
 }
 
 export const experience: ExperienceItem[] = [
@@ -25,6 +25,24 @@ export const experience: ExperienceItem[] = [
     ],
     icon: Briefcase,
     badge: "Current",
+  },
+  {
+    title: "Master of Computer Applications",
+    organization: "CHRIST (Deemed to be University), Bangalore",
+    period: "2025 — Present",
+    description:
+      "Pursuing MCA with a 9.32 GPA, focused on advanced software engineering, distributed systems, and cloud-native architecture.",
+    icon: GraduationCap,
+    badge: "Education",
+  },
+  {
+    title: "Bachelor of Computer Applications",
+    organization: "Presidency College (Autonomous), Bangalore",
+    period: "2022 — 2025",
+    description:
+      "Graduated top of the batch as Gold Medalist with a 9.54 GPA — built a deep foundation in DSA, OOP, DBMS, operating systems, networks, and web development.",
+    icon: Trophy,
+    badge: "Gold Medal",
   },
   {
     title: "MERN Stack Intern",

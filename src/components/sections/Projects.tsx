@@ -3,7 +3,7 @@ import { ArrowUpRight, Github, Globe, Hammer } from "lucide-react";
 import { Reveal } from "@/components/motion/Reveal";
 import { SectionHeading } from "@/components/motion/SectionHeading";
 import { SpotlightCard } from "@/components/motion/SpotlightCard";
-import { featuredProjects, otherProjects, type Project } from "@/data/projects";
+import { featuredProjects, type Project } from "@/data/projects";
 
 function TechBadges({ tech, limit }: { tech: string[]; limit?: number }) {
   const shown = limit ? tech.slice(0, limit) : tech;
@@ -90,10 +90,10 @@ function FeaturedCard({ project, index }: { project: Project; index: number }) {
                 <ArrowUpRight className="h-3.5 w-3.5" aria-hidden />
               </motion.a>
             )}
-            {project.status && (
+            {!project.live && (
               <span className="inline-flex items-center gap-2 rounded-full border border-accent/30 bg-accent/10 px-4 py-2 text-xs font-semibold uppercase tracking-wider text-accent-soft">
                 <Hammer className="h-3.5 w-3.5" aria-hidden />
-                {project.status} — shipping soon
+                Live demo shipping soon
               </span>
             )}
           </div>
@@ -138,66 +138,23 @@ export function Projects() {
           ))}
         </div>
 
-        {/* More */}
-        <h3 className="mb-8 mt-20 text-center text-sm font-semibold uppercase tracking-[0.2em] text-muted-foreground">
-          More builds
-        </h3>
-        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {otherProjects.map((project, index) => (
-            <Reveal key={project.slug} delay={index * 0.06} className="h-full">
-              <motion.article
-                whileHover={{ y: -6 }}
-                transition={{ type: "spring", stiffness: 300, damping: 24 }}
-                className="glass shadow-premium group flex h-full flex-col rounded-3xl p-6 transition-colors duration-300 hover:border-accent/30"
-              >
-                <div className="mb-4 flex items-center justify-between">
-                  <span className="glass flex h-11 w-11 items-center justify-center rounded-2xl">
-                    <project.icon className="h-5 w-5 text-accent" aria-hidden />
-                  </span>
-                  <span className="flex items-center gap-3">
-                    {project.live && (
-                      <a
-                        href={project.live}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        aria-label={`${project.title} live demo`}
-                        className="text-muted-foreground opacity-0 transition-all duration-300 hover:text-accent-soft group-hover:opacity-100 focus-visible:opacity-100"
-                      >
-                        <Globe className="h-5 w-5" aria-hidden />
-                      </a>
-                    )}
-                    {project.github && (
-                      <a
-                        href={project.github}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        aria-label={`${project.title} source code on GitHub`}
-                        className="text-muted-foreground opacity-0 transition-all duration-300 hover:text-foreground group-hover:opacity-100 focus-visible:opacity-100"
-                      >
-                        <ArrowUpRight className="h-5 w-5" aria-hidden />
-                      </a>
-                    )}
-                  </span>
-                </div>
-                <h3 className="text-base font-semibold text-foreground">{project.title}</h3>
-                <p className="text-xs text-accent-soft">{project.subtitle}</p>
-                <p className="mb-5 mt-3 flex-grow text-sm leading-relaxed text-muted-foreground">{project.description}</p>
-                <TechBadges tech={project.tech} limit={5} />
-              </motion.article>
-            </Reveal>
-          ))}
-        </div>
-
-        <Reveal delay={0.2} className="mt-14 text-center">
-          <a
+        {/* Everything else lives on GitHub */}
+        <Reveal delay={0.15} className="mt-16 text-center">
+          <p className="mb-5 text-sm text-muted-foreground">
+            30+ more builds — real-time systems, AI products, and full-stack platforms — live on GitHub.
+          </p>
+          <motion.a
             href="https://github.com/namrathar-18?tab=repositories"
             target="_blank"
             rel="noopener noreferrer"
-            className="glass inline-flex items-center gap-2 rounded-full px-7 py-3.5 text-sm font-semibold text-foreground transition-colors duration-300 hover:border-accent/40"
+            whileHover={{ y: -2 }}
+            whileTap={{ scale: 0.97 }}
+            className="glow-accent-sm inline-flex items-center gap-2 rounded-full bg-accent px-8 py-4 text-sm font-semibold text-accent-foreground transition-colors hover:bg-accent-soft"
           >
             <Github className="h-4 w-4" aria-hidden />
-            All repositories on GitHub
-          </a>
+            Explore all projects on GitHub
+            <ArrowUpRight className="h-4 w-4" aria-hidden />
+          </motion.a>
         </Reveal>
       </div>
     </section>

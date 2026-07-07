@@ -6,6 +6,8 @@ const badgeStyles: Record<string, string> = {
   Current: "border-accent/40 bg-accent/10 text-accent-soft",
   Internship: "border-white/15 bg-white/[0.05] text-foreground/80",
   Leadership: "border-white/15 bg-white/[0.05] text-foreground/80",
+  Education: "border-accent/30 bg-accent/[0.07] text-accent-soft",
+  "Gold Medal": "border-accent/40 bg-accent/10 text-accent-soft",
 };
 
 export function Experience() {
@@ -14,9 +16,9 @@ export function Experience() {
       <div className="bg-halo absolute inset-x-0 top-0 h-96" aria-hidden />
       <div className="container relative">
         <SectionHeading
-          eyebrow="Experience"
-          title="Where I've built and led"
-          description="Internships at Adobe and EY, applied AI training, and leadership across two college-wide IT fests."
+          eyebrow="Experience & Education"
+          title="The journey so far"
+          description="Adobe and EY internships, an MCA at CHRIST and a gold-medal BCA at Presidency, and leadership across two college-wide IT fests — most recent first."
         />
 
         <ol className="relative mx-auto max-w-3xl">
@@ -33,7 +35,7 @@ export function Experience() {
                 className="glass absolute left-5 top-1 flex h-10 w-10 -translate-x-1/2 items-center justify-center rounded-full border-white/15 sm:left-6"
                 aria-hidden
               >
-                <item.icon className={`h-4 w-4 ${item.badge === "Current" ? "text-accent" : "text-muted-foreground"}`} />
+                <item.icon className={`h-4 w-4 ${["Current", "Gold Medal"].includes(item.badge) ? "text-accent" : "text-muted-foreground"}`} />
               </div>
 
               <Reveal direction="right" delay={index * 0.08}>

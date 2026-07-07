@@ -23,7 +23,7 @@ export function About() {
               />
               <div className="glass shadow-premium relative overflow-hidden rounded-3xl p-2">
                 <img
-                  src="/profile.png"
+                  src={`${import.meta.env.BASE_URL}profile.png`}
                   alt={`Portrait of ${profile.name}`}
                   width={420}
                   height={420}

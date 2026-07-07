@@ -15,7 +15,7 @@ export const profile = {
   email: "namrp.18@gmail.com",
   phone: "+91 6360086591",
   phoneHref: "tel:+916360086591",
-  resumeUrl: "/resume.pdf",
+  resumeUrl: `${import.meta.env.BASE_URL}resume.pdf`,
   github: "https://github.com/namrathar-18",
   githubUsername: "namrathar-18",
   linkedin: "https://www.linkedin.com/in/namratharp18/",
