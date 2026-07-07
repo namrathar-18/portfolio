@@ -15,7 +15,7 @@ export const experience: ExperienceItem[] = [
   {
     title: "Technical Consultant Intern",
     organization: "Adobe",
-    period: "Jun 2025 — Present",
+    period: "Apr 2026 — Present",
     description:
       "Working on enterprise-grade product solutions with cross-functional teams, with hands-on exposure to how software is engineered, consulted on, and shipped at scale.",
     points: [
@@ -41,15 +41,6 @@ export const experience: ExperienceItem[] = [
     badge: "Internship",
   },
   {
-    title: "Artificial Intelligence Intern",
-    organization: "Artifintel × Skill Vertex",
-    period: "Feb 2023 — Mar 2023",
-    description:
-      "Completed live AI projects through Artifintel in association with Skill Vertex, working on applied machine-learning problems end to end. Certificate ID: RA226798.",
-    icon: Cpu,
-    badge: "Internship",
-  },
-  {
     title: "Event Head — IT Fest Kalopsia",
     organization: "Presidency College, Bangalore",
     period: "Sep 2024",
@@ -66,5 +57,14 @@ export const experience: ExperienceItem[] = [
       "Owned end-to-end planning and execution of technical competitions, coding challenges, and workshops for the annual IT fest.",
     icon: Star,
     badge: "Leadership",
+  },
+  {
+    title: "Artificial Intelligence Intern",
+    organization: "Artifintel × Skill Vertex",
+    period: "Feb 2023 — Mar 2023",
+    description:
+      "Completed live AI projects through Artifintel in association with Skill Vertex, working on applied machine-learning problems end to end. Certificate ID: RA226798.",
+    icon: Cpu,
+    badge: "Internship",
   },
 ];

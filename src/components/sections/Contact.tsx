@@ -7,6 +7,12 @@ import { profile } from "@/data/profile";
 
 const API_URL = import.meta.env.VITE_API_URL as string | undefined;
 
+/**
+ * Serverless email delivery — messages land directly in the inbox.
+ * The custom backend (VITE_API_URL) takes priority when configured.
+ */
+const FORMSUBMIT_ENDPOINT = `https://formsubmit.co/ajax/${"namrp.18@gmail.com"}`;
+
 const contactInfo = [
   { icon: Mail, label: "Email", value: profile.email, href: `mailto:${profile.email}` },
   { icon: Phone, label: "Phone", value: profile.phone, href: profile.phoneHref },
@@ -22,33 +28,54 @@ export function Contact() {
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-
-    // Without a configured API, fall back to a pre-filled mail draft.
-    if (!API_URL) {
-      const body = encodeURIComponent(`${formData.message}\n\n— ${formData.name} (${formData.email})`);
-      window.location.href = `mailto:${profile.email}?subject=${encodeURIComponent("Portfolio contact")}&body=${body}`;
-      return;
-    }
-
     setIsSending(true);
+
     try {
-      const response = await fetch(`${API_URL}/contacts`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
-      });
-      const data = await response.json();
+      const response = API_URL
+        ? await fetch(`${API_URL}/contacts`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(formData),
+          })
+        : await fetch(FORMSUBMIT_ENDPOINT, {
+            method: "POST",
+            headers: { "Content-Type": "application/json", Accept: "application/json" },
+            body: JSON.stringify({
+              name: formData.name,
+              email: formData.email,
+              message: formData.message,
+              _subject: `Portfolio contact from ${formData.name}`,
+              _template: "table",
+              _captcha: "false",
+            }),
+          });
+
       if (response.ok) {
-        toast.success("Message sent — I'll get back to you soon.");
-        setFormData({ name: "", email: "", message: "" });
+        const data = await response.json().catch(() => null);
+        // FormSubmit returns 200 with success:"false" until the form is activated
+        if (data && String(data.success) === "false") {
+          toast.error("The form isn't active yet — opening your email app instead.");
+          openMailDraft();
+        } else {
+          toast.success("Message sent — I'll get back to you soon.");
+          setFormData({ name: "", email: "", message: "" });
+        }
       } else {
-        toast.error(data.error ?? "Failed to send message.");
+        const data = await response.json().catch(() => null);
+        toast.error(data?.error ?? "Failed to send — opening your email app instead.");
+        openMailDraft();
       }
     } catch {
-      toast.error("Failed to send message. Please email me directly.");
+      toast.error("Failed to send — opening your email app instead.");
+      openMailDraft();
     } finally {
       setIsSending(false);
     }
+  };
+
+  const openMailDraft = () => {
+    const body = encodeURIComponent(`${formData.message}\n\n— ${formData.name} (${formData.email})`);
+    window.location.href = `mailto:${profile.email}?subject=${encodeURIComponent("Portfolio contact")}&body=${body}`;
   };
 
   return (

@@ -1,5 +1,7 @@
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
+import { ScrollProgress } from "@/components/motion/ScrollProgress";
+import { TechMarquee } from "@/components/motion/TechMarquee";
 import { Hero } from "@/components/sections/Hero";
 import { About } from "@/components/sections/About";
 import { Skills } from "@/components/sections/Skills";
@@ -21,9 +23,11 @@ const Index = () => {
       >
         Skip to content
       </a>
+      <ScrollProgress />
       <Navbar />
       <main id="main">
         <Hero />
+        <TechMarquee />
         <About />
         <Skills />
         <Experience />

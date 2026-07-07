@@ -10,6 +10,9 @@ import {
   Users,
   Repeat,
   Store,
+  Boxes,
+  Building2,
+  ShieldAlert,
 } from "lucide-react";
 
 export interface Project {
@@ -24,12 +27,81 @@ export interface Project {
   solution?: string;
   tech: string[];
   icon: LucideIcon;
-  github: string;
+  /** Omit while the repository is still private / in build */
+  github?: string;
+  /** Hosted demo URL — renders a "Live demo" button when set */
   live?: string;
+  status?: "In build";
   featured: boolean;
 }
 
 export const projects: Project[] = [
+  {
+    slug: "fleettwin",
+    title: "FleetTwin 3D",
+    subtitle: "3D digital twin + AI ops copilot",
+    description:
+      "A real-time 3D digital twin of a warehouse: operational events stream onto a live Three.js scene while ML services forecast demand, flag anomalies, and optimize slotting — and an AI copilot answers questions by calling tools against live data, never fabricating numbers.",
+    architecture:
+      "Next.js + React Three Fiber twin connected over WebSockets to a Node gateway; Redis Streams fan events to a simulator, an ingest service, and FastAPI ML services. TimescaleDB holds telemetry, MongoDB holds inventory, pgvector powers the copilot's retrieval.",
+    highlights: [
+      "Live operational events rendered onto a 3D warehouse twin",
+      "Forecasting, anomaly detection, and slotting as ML microservices",
+      "Tool-calling RAG copilot grounded in live operational data",
+    ],
+    challenge:
+      "Keeping the copilot truthful — an LLM asked about live operations will happily invent inventory counts.",
+    solution:
+      "Every answer is produced through tool calls against the live stores; the model narrates real query results instead of generating numbers, so answers stay auditable.",
+    tech: ["Next.js", "React Three Fiber", "Node.js", "Redis Streams", "FastAPI", "TimescaleDB", "MongoDB", "pgvector", "Docker"],
+    icon: Boxes,
+    status: "In build",
+    featured: true,
+  },
+  {
+    slug: "repoverse",
+    title: "RepoVerse 3D",
+    subtitle: "Codebases as living 3D cities",
+    description:
+      "Paste a GitHub repo URL and watch it render as a 3D city — buildings are files, height is complexity, heat is churn, red glow is risk. An AI copilot that has actually read the code answers architecture questions with cited file paths, lighting up the buildings it references.",
+    architecture:
+      "A Next.js full-stack modular monolith: clone → parse → mine git history → embed pipeline with live progress, an InstancedMesh city holding 60 FPS at ~800 files, and a retrieval-grounded copilot whose every claim traces to a tool result.",
+    highlights: [
+      "Buildings = files, height = complexity, heat = churn, glow = risk",
+      "Copilot cites real file paths — it cannot invent one",
+      "Chat and 3D are wired: referenced files pulse in the city",
+    ],
+    challenge:
+      "Making an LLM's answers about an arbitrary codebase verifiable rather than plausible-sounding.",
+    solution:
+      "The copilot only speaks from retrieved code chunks and static-analysis results; cited paths are validated against the parsed file graph before rendering, and each citation drives the 3D highlight.",
+    tech: ["Next.js", "TypeScript", "Three.js", "InstancedMesh", "Embeddings", "RAG", "LLM tool-calling", "Git mining"],
+    icon: Building2,
+    status: "In build",
+    featured: true,
+  },
+  {
+    slug: "fraudmesh",
+    title: "FraudMesh",
+    subtitle: "Real-time payment fraud detection",
+    description:
+      "A streaming fraud platform that scores every payment in under 100 ms — rules plus LightGBM over a Redis online feature store — detects fraud rings with graph community detection, explains every block with SHAP, and gives analysts an AI copilot that narrates decisions in plain language.",
+    architecture:
+      "A simulator fires UPI-like transactions into a Redpanda stream; the scoring service combines rules, a LightGBM model, and rolling Redis features computed by code shared between training and serving. Louvain community detection over the account–device graph surfaces mule rings that feed back into the score.",
+    highlights: [
+      "p99 scoring latency under 100 ms, proven on a live latency panel",
+      "Graph intelligence: Louvain clustering exposes mule rings",
+      "Per-decision SHAP values stored and narrated by the copilot",
+    ],
+    challenge:
+      "Fraud models trained offline quietly diverge from what serving computes — train/serve skew silently corrupts scores.",
+    solution:
+      "One shared feature library computes rolling features in both training and the Redis online store, with TTL semantics — the model always sees features built by the same code path.",
+    tech: ["Python", "LightGBM", "Redis", "Redpanda", "FastAPI", "SHAP", "Graph / Louvain", "React"],
+    icon: ShieldAlert,
+    status: "In build",
+    featured: true,
+  },
   {
     slug: "messaging-platform",
     title: "Real-Time Messaging Platform",
@@ -44,7 +116,7 @@ export const projects: Project[] = [
       "Dockerized services for reproducible deploys",
     ],
     challenge:
-      "Keeping message delivery consistent when users on the same room connect to different server instances.",
+      "Keeping message delivery consistent when users in the same room connect to different server instances.",
     solution:
       "A Redis pub/sub bridge decouples rooms from server affinity — every instance subscribes to room channels, so broadcasts reach all members regardless of which node holds their socket.",
     tech: ["Node.js", "Express", "Socket.io", "Redis", "MongoDB", "React", "TypeScript", "Docker", "JWT"],
@@ -53,48 +125,44 @@ export const projects: Project[] = [
     featured: true,
   },
   {
+    slug: "musify",
+    title: "Musify",
+    subtitle: "Music streaming app — built at EY",
+    description:
+      "Full-stack music streaming application with 500+ cached Spotify tracks, playlist management, likes, and 30-second preview streaming behind a polished player UI. Built during the EY GDS internship.",
+    architecture:
+      "MERN stack with Clerk authentication and the Spotify Web API: an Express catalog service caches track metadata in MongoDB, while the React player streams previews with Zustand-managed state.",
+    highlights: [
+      "500+ cached Spotify tracks with playlist management",
+      "Clerk authentication and Spotify Web API integration",
+      "Built end-to-end in a six-week internship engagement",
+    ],
+    tech: ["React", "Node.js", "MongoDB", "Express", "Clerk", "Spotify API", "Zustand"],
+    icon: Music,
+    github: "https://github.com/namrathar-18/musify",
+    featured: true,
+  },
+  {
     slug: "skillswap-timebank",
     title: "SkillSwap Time Bank",
     subtitle: "Barter skills, trade hours",
     description:
-      "A time-banking marketplace where people trade skills using hours as currency — AI-assisted skill matching, escrowed hour transfers, real-time session scheduling, and an interactive 3D landing experience.",
-    architecture:
-      "MERN core with a double-entry ledger for hour balances, AI-powered match scoring between offered and requested skills, and a Three.js hero scene rendered with react-three-fiber.",
-    highlights: [
-      "Double-entry hour ledger with escrow on session booking",
-      "AI skill-matching and recommendation engine",
-      "Interactive Three.js landing experience",
-    ],
-    challenge:
-      "Preventing hour-balance corruption when two users book, cancel, or dispute sessions concurrently.",
-    solution:
-      "Modeled every transfer as an immutable double-entry ledger record with atomic MongoDB transactions — balances are derived, never mutated, so the ledger is auditable and race-safe.",
-    tech: ["MongoDB", "Express", "React", "Node.js", "Three.js", "OpenAI", "JWT", "Socket.io"],
+      "A time-banking marketplace where people trade skills using hours as currency — AI-assisted matching, escrowed hour transfers on a double-entry ledger, and an interactive Three.js landing experience.",
+    tech: ["MongoDB", "Express", "React", "Node.js", "Three.js", "OpenAI", "Socket.io"],
     icon: Repeat,
     github: "https://github.com/namrathar-18/skillswap-timebank",
-    featured: true,
+    featured: false,
   },
   {
     slug: "ecommerce-platform",
-    title: "ShopMesh — Multi-Vendor Commerce",
-    subtitle: "Marketplace engine with vendor storefronts",
+    title: "ShopMesh",
+    subtitle: "Multi-vendor commerce engine",
     description:
-      "A multi-vendor e-commerce platform: vendor onboarding and storefronts, catalog and inventory management, cart and checkout flows, order lifecycle tracking, and role-based dashboards for admins, vendors, and buyers.",
-    architecture:
-      "React frontend over a Node/Express API with MySQL as the transactional store — normalized schema for vendors, products, variants, orders, and settlements, with role-based access control across three dashboard types.",
-    highlights: [
-      "Three-role RBAC: admin, vendor, and customer dashboards",
-      "Transactional order lifecycle on MySQL",
-      "Vendor settlement and inventory tracking",
-    ],
-    challenge:
-      "Keeping inventory truthful during concurrent checkouts across vendors sharing the same catalog tables.",
-    solution:
-      "Row-level locking inside MySQL transactions at checkout — stock is reserved atomically with the order insert, eliminating oversells without a distributed lock service.",
-    tech: ["React", "Node.js", "Express", "MySQL", "JWT", "REST API"],
+      "Multi-vendor e-commerce platform with vendor storefronts, atomic order management, row-level-locked checkout to prevent oversells, and role-based dashboards for admins, vendors, and buyers.",
+    tech: ["React", "Node.js", "Express", "MySQL", "Prisma", "JWT"],
     icon: Store,
     github: "https://github.com/namrathar-18/ecommerce-platform",
-    featured: true,
+    featured: false,
   },
   {
     slug: "quiz-platform",
@@ -102,11 +170,6 @@ export const projects: Project[] = [
     subtitle: "Multiplayer quiz engine",
     description:
       "Kahoot-style real-time quiz platform sustaining 100+ concurrent players per room across 20+ simultaneous rooms with sub-120ms broadcast latency. Live leaderboards run on Redis sorted sets.",
-    highlights: [
-      "Sub-120ms broadcast latency at 100+ players/room",
-      "Leaderboards on Redis sorted sets",
-      "20+ simultaneous rooms per instance",
-    ],
     tech: ["React", "Node.js", "Socket.io", "Redis", "MongoDB", "JWT", "Zustand"],
     icon: Zap,
     github: "https://github.com/namrathar-18/quiz-platform",
@@ -146,17 +209,6 @@ export const projects: Project[] = [
     featured: false,
   },
   {
-    slug: "musify",
-    title: "Musify",
-    subtitle: "Music streaming app — built at EY",
-    description:
-      "Full-stack music streaming application with 500+ cached Spotify tracks, playlist management, likes, and 30-second preview streaming behind a polished player UI. Built during the EY GDS internship.",
-    tech: ["React", "Node.js", "MongoDB", "Express", "Clerk", "Spotify API", "Zustand"],
-    icon: Music,
-    github: "https://github.com/namrathar-18/musify",
-    featured: false,
-  },
-  {
     slug: "auraai-beauty",
     title: "AuraAI Beauty",
     subtitle: "AI skincare advisor",
@@ -176,6 +228,7 @@ export const projects: Project[] = [
     tech: ["React", "Node.js", "MongoDB", "Express", "JWT", "REST API"],
     icon: Users,
     github: "https://github.com/namrathar-18/campus-placement-portal",
+    live: "https://campus-placement-portal-drab.vercel.app",
     featured: false,
   },
 ];

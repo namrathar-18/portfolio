@@ -25,7 +25,8 @@ A single-page portfolio designed around a luxury dark theme (`#0D0D0D`) with a s
 - **Three.js hero** — additive-blended particle constellation with a breathing wireframe sphere and cursor-parallax camera, lazy-loaded off the critical bundle
 - **Live GitHub integration** — repositories, language distribution, and a year of contributions fetched from the GitHub API at runtime
 - **Lenis smooth scrolling** with anchor handling, plus scroll-triggered reveals via Framer Motion
-- **Full section set** — About, Skills, Experience, Featured Projects (architecture / challenge → solution), Research, Education, Achievements, Certifications, Contact
+- **Five flagship projects** — FleetTwin 3D, RepoVerse 3D, FraudMesh, the Real-Time Messaging Platform, and Musify, each with architecture and challenge → solution breakdowns, live-demo and source buttons
+- **Full section set** — About, Skills, Experience, Projects, Research, Education, Achievements, Certifications, Contact, plus a scroll progress bar, tech marquee, cursor-spotlight cards, and film-grain finish
 - **Accessibility** — semantic landmarks, skip link, keyboard focus rings, ARIA labels, and full `prefers-reduced-motion` support (the 3D scene renders a static fallback)
 - **Performance** — code-split Three.js chunk, lazy images, preconnected origins, 11 runtime dependencies total
 - **Responsive** — mobile through ultra-wide with zero horizontal overflow
@@ -63,12 +64,12 @@ npm run lint
 npm test
 ```
 
-### Contact form backend (optional)
+### Contact form
 
-The contact form posts to `VITE_API_URL` when set (see `backend/` for the Express + MongoDB API). Without it, the form gracefully falls back to opening a pre-filled email draft.
+Messages are delivered straight to the inbox via FormSubmit — no backend required. The first submission triggers a one-time "Activate Form" email; click it once and the form is live. If `VITE_API_URL` is set, the custom Express + MongoDB API in `backend/` takes priority instead:
 
 ```bash
-# .env
+# .env (optional)
 VITE_API_URL=https://your-api.example.com/api
 ```
 

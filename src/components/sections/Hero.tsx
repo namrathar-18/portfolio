@@ -29,6 +29,20 @@ export function Hero() {
         <HeroScene />
       </Suspense>
 
+      {/* Aurora wash behind the headline */}
+      <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden>
+        <motion.div
+          className="absolute left-1/2 top-1/3 h-[420px] w-[680px] -translate-x-1/2 rounded-full bg-accent/[0.14] blur-[140px]"
+          animate={{ x: ["-52%", "-44%", "-52%"], y: ["-8%", "6%", "-8%"] }}
+          transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
+        />
+        <motion.div
+          className="absolute right-[8%] top-[16%] h-72 w-72 rounded-full bg-accent-soft/[0.07] blur-[110px]"
+          animate={{ y: [0, 32, 0] }}
+          transition={{ duration: 14, repeat: Infinity, ease: "easeInOut" }}
+        />
+      </div>
+
       <div className="container relative z-10 py-32 text-center">
         <motion.p
           {...entrance(0.15)}
@@ -43,11 +57,11 @@ export function Hero() {
 
         <motion.h1
           {...entrance(0.3)}
-          className="text-shine mx-auto max-w-4xl text-5xl font-bold leading-[1.05] tracking-tight sm:text-6xl md:text-7xl"
+          className="text-shine mx-auto max-w-5xl text-5xl font-bold leading-[1.05] tracking-tight sm:text-6xl md:text-7xl"
         >
-          {profile.name.split(" ")[0]}
+          {profile.name}
           <span className="text-accent">.</span>
-          <span className="mt-3 block text-2xl font-medium tracking-normal text-muted-foreground sm:text-3xl md:text-4xl">
+          <span className="mt-4 block text-2xl font-medium tracking-normal text-muted-foreground sm:text-3xl md:text-4xl">
             {profile.headline}
           </span>
         </motion.h1>
