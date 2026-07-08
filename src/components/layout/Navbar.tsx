@@ -42,10 +42,19 @@ export function Navbar() {
       >
         <a
           href="#home"
-          className="font-display text-lg font-bold tracking-tight text-foreground"
+          className="flex items-center gap-2.5"
           aria-label={`${profile.name} — home`}
         >
-          N<span className="text-accent">R</span>
+          <img
+            src={`${import.meta.env.BASE_URL}favicon.svg`}
+            alt=""
+            width={28}
+            height={28}
+            className="h-7 w-7 rounded-md"
+          />
+          <span className="font-display text-lg font-bold tracking-tight text-foreground">
+            {profile.name}
+          </span>
         </a>
 
         {/* Desktop */}
