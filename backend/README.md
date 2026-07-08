@@ -2,6 +2,10 @@
 
 Express + Nodemailer service behind the portfolio contact form. Sends every submission straight to your inbox via Gmail SMTP, with the visitor's address as `Reply-To` — hit Reply to answer them directly. MongoDB persistence is optional.
 
+[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/namrathar-18/portfolio)
+
+> One click on the button above reads [`render.yaml`](../render.yaml) and provisions everything. You only connect GitHub once and paste the three `EMAIL_*` values.
+
 ## Environment variables
 
 | Variable | Required | Purpose |
