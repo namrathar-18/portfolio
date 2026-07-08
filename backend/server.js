@@ -51,7 +51,8 @@ app.use('/api/contacts', contactRoutes);
 app.get('/api/health', (req, res) => {
   res.json({
     status: 'ok',
-    email: Boolean(process.env.EMAIL_USER && process.env.EMAIL_PASSWORD),
+    email: Boolean(process.env.RESEND_API_KEY || (process.env.EMAIL_USER && process.env.EMAIL_PASSWORD)),
+    resend: Boolean(process.env.RESEND_API_KEY),
     db: mongoose.connection.readyState === 1,
   });
 });
