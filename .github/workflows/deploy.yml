@@ -27,6 +27,9 @@ jobs:
       - run: npm run build
         env:
           GITHUB_PAGES: "true"
+          # Set the VITE_API_URL repo variable to route the contact form
+          # through the Nodemailer backend instead of the form service
+          VITE_API_URL: ${{ vars.VITE_API_URL }}
       - name: SPA fallback
         run: cp dist/index.html dist/404.html
       - uses: actions/upload-pages-artifact@v3

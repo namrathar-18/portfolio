@@ -1,0 +1,20 @@
+services:
+  - type: web
+    name: portfolio-api
+    runtime: node
+    rootDir: backend
+    plan: free
+    buildCommand: npm ci
+    startCommand: node server.js
+    healthCheckPath: /api/health
+    envVars:
+      - key: EMAIL_USER
+        sync: false
+      - key: EMAIL_PASSWORD
+        sync: false
+      - key: EMAIL_TO
+        sync: false
+      - key: ADMIN_KEY
+        generateValue: true
+      - key: MONGO_URI
+        sync: false
