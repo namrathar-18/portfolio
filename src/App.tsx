@@ -1,17 +1,14 @@
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Toaster } from "sonner";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import { useLenis } from "@/hooks/use-lenis";
 
-const queryClient = new QueryClient();
-
 const App = () => {
   useLenis();
 
   return (
-    <QueryClientProvider client={queryClient}>
+    <>
       <Toaster theme="dark" position="bottom-right" />
       <BrowserRouter
         basename={import.meta.env.BASE_URL.replace(/\/$/, "")}
@@ -22,7 +19,7 @@ const App = () => {
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
-    </QueryClientProvider>
+    </>
   );
 };
 

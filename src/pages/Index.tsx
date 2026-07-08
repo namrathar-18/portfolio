@@ -9,7 +9,6 @@ import { Experience } from "@/components/sections/Experience";
 import { Projects } from "@/components/sections/Projects";
 import { Education } from "@/components/sections/Education";
 import { Achievements } from "@/components/sections/Achievements";
-import { GitHubActivity } from "@/components/sections/GitHubActivity";
 import { Contact } from "@/components/sections/Contact";
 
 const Index = () => {
@@ -32,7 +31,6 @@ const Index = () => {
         <Projects />
         <Education />
         <Achievements />
-        <GitHubActivity />
         <Contact />
       </main>
       <Footer />
