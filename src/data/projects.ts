@@ -79,7 +79,7 @@ export const projects: Project[] = [
     tech: ["Next.js", "TypeScript", "Three.js", "InstancedMesh", "Embeddings", "RAG", "LLM tool-calling", "Git mining"],
     icon: Building2,
     github: "https://github.com/namrathar-18/repoverse",
-    status: "In build",
+    live: "https://repoverse-nu.vercel.app",
     featured: true,
   },
   {
