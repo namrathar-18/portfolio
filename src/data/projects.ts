@@ -53,10 +53,10 @@ export const projects: Project[] = [
       "Keeping the copilot truthful — an LLM asked about live operations will happily invent inventory counts.",
     solution:
       "Every answer is produced through tool calls against the live stores; the model narrates real query results instead of generating numbers, so answers stay auditable.",
-    tech: ["Next.js", "React Three Fiber", "Node.js", "Redis Streams", "FastAPI", "TimescaleDB", "MongoDB", "pgvector", "Docker"],
+    tech: ["Next.js", "React Three Fiber", "Node.js", "JWT Auth", "Groq LLM", "RAG", "FastAPI", "Redis Streams", "Docker"],
     icon: Boxes,
-    github: "https://github.com/namrathar-18/fleettwin",
-    status: "In build",
+    github: "https://github.com/namrathar-18/fleet-twin",
+    live: "https://fleet-twin.vercel.app",
     featured: true,
   },
   {
