@@ -102,7 +102,7 @@ export const projects: Project[] = [
     tech: ["Python", "LightGBM", "Redis", "Redpanda", "FastAPI", "SHAP", "Graph / Louvain", "React"],
     icon: ShieldAlert,
     github: "https://github.com/namrathar-18/fraudmesh",
-    status: "In build",
+    live: "https://fraudmesh.vercel.app",
     featured: true,
   },
   {
