@@ -125,6 +125,7 @@ export const projects: Project[] = [
     tech: ["Node.js", "Express", "Socket.io", "Redis", "MongoDB", "React", "TypeScript", "Docker", "JWT"],
     icon: MessageSquare,
     github: "https://github.com/namrathar-18/messaging-platform",
+    live: "https://pinglink.vercel.app",
     featured: true,
   },
   {
