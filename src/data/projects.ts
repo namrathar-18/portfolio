@@ -144,6 +144,7 @@ export const projects: Project[] = [
     tech: ["React", "Node.js", "MongoDB", "Express", "Clerk", "Spotify API", "Zustand"],
     icon: Music,
     github: "https://github.com/namrathar-18/musify",
+    live: "https://musify-sigma-blond.vercel.app/",
     featured: true,
   },
   {
