@@ -89,17 +89,17 @@ export const projects: Project[] = [
     description:
       "A streaming fraud platform that scores every payment in under 100 ms — rules plus LightGBM over a Redis online feature store — detects fraud rings with graph community detection, explains every block with SHAP, and gives analysts an AI copilot that narrates decisions in plain language.",
     architecture:
-      "A simulator fires UPI-like transactions into a Redpanda stream; the scoring service combines rules, a LightGBM model, and rolling Redis features computed by code shared between training and serving. Louvain community detection over the account–device graph surfaces mule rings that feed back into the score.",
+      "An 11-module enterprise console with role-based access: the full streaming pipeline — simulator → online feature store → two-tier scoring → SHAP → graph ring detection → drift (PSI) → champion/challenger retraining → analyst feedback loop — runs live in the browser, with a Leaflet geo-map of fraud hotspots and a grounded AI copilot.",
     highlights: [
       "p99 scoring latency under 100 ms, proven on a live latency panel",
-      "Graph intelligence: Louvain clustering exposes mule rings",
-      "Per-decision SHAP values stored and narrated by the copilot",
+      "Graph intelligence exposes mule rings by collector fan-in analysis",
+      "Per-decision SHAP explanations narrated by a grounded copilot",
     ],
     challenge:
-      "Fraud models trained offline quietly diverge from what serving computes — train/serve skew silently corrupts scores.",
+      "Fraud is a needle-in-a-haystack problem: ~4% base rate makes a naive model drown analysts in false positives.",
     solution:
-      "One shared feature library computes rolling features in both training and the Redis online store, with TTL semantics — the model always sees features built by the same code path.",
-    tech: ["Python", "LightGBM", "Redis", "Redpanda", "FastAPI", "SHAP", "Graph / Louvain", "React"],
+      "A calibrated two-tier scorer plus graph enrichment and merchant allowlisting hold precision and recall balanced, while a shared feature module avoids train/serve skew and a drift monitor triggers champion/challenger retraining.",
+    tech: ["React", "TypeScript", "Graph ML / Louvain", "SHAP", "Drift / PSI", "Leaflet", "RBAC", "Real-time"],
     icon: ShieldAlert,
     github: "https://github.com/namrathar-18/fraudmesh",
     live: "https://fraudmesh.vercel.app",
