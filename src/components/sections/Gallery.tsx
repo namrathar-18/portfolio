@@ -10,8 +10,9 @@ function GalleryPhoto({ item }: { item: GalleryItem }) {
 
   if (failed) {
     return (
-      <div className="flex h-full w-full items-center justify-center bg-background-secondary">
+      <div className="flex h-full w-full flex-col items-center justify-center gap-2 bg-background-secondary px-6 text-center">
         <ImageIcon className="h-8 w-8 text-muted-foreground/30" aria-hidden />
+        <span className="text-xs text-muted-foreground/50">{item.title}</span>
       </div>
     );
   }
@@ -21,7 +22,14 @@ function GalleryPhoto({ item }: { item: GalleryItem }) {
       src={`${import.meta.env.BASE_URL}gallery/${item.file}`}
       alt={item.caption}
       loading="lazy"
+      decoding="async"
       onError={() => setFailed(true)}
+      // A missing file is served as the SPA fallback HTML with a 200, so the
+      // load "succeeds" with no pixels — catch that too.
+      onLoad={(e) => {
+        if ((e.currentTarget as HTMLImageElement).naturalWidth === 0) setFailed(true);
+      }}
+      style={{ objectPosition: item.objectPosition ?? "center" }}
       className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"
     />
   );
@@ -57,7 +65,7 @@ export function Gallery() {
         <SectionHeading
           eyebrow="Moments"
           title="Milestones along the way"
-          description="A few moments from the journey — the gold medal, the internships, and the stages I've hosted from."
+          description="The gold medal, the internships, and the stages I've hosted from."
         />
       </div>
 
@@ -105,7 +113,7 @@ export function Gallery() {
               className="group relative w-[78vw] shrink-0 snap-center sm:w-[22rem] lg:w-[24rem]"
             >
               <figure className="card-border-gradient shadow-premium relative h-full overflow-hidden rounded-3xl">
-                <div className="aspect-[4/5] overflow-hidden bg-background-secondary">
+                <div className="aspect-[3/4] overflow-hidden bg-background-secondary">
                   <GalleryPhoto item={item} />
                 </div>
 

@@ -10,7 +10,6 @@ export function About() {
         <SectionHeading
           eyebrow="About"
           title="Engineer, gold medalist, systems thinker"
-          description={profile.bio}
         />
 
         <div className="grid items-start gap-12 lg:grid-cols-5">

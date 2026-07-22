@@ -27,12 +27,12 @@ const Index = () => {
         <Hero />
         <TechMarquee />
         <About />
+        <Gallery />
         <Skills />
         <Experience />
         <Projects />
         <Education />
         <Achievements />
-        <Gallery />
         <Contact />
       </main>
       <Footer />
