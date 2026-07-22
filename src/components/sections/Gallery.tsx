@@ -110,10 +110,15 @@ export function Gallery() {
           {gallery.map((item) => (
             <li
               key={item.file}
-              className="group relative w-[78vw] shrink-0 snap-center sm:w-[22rem] lg:w-[24rem]"
+              className={`group relative shrink-0 snap-center ${
+                item.wide
+                  ? "w-[86vw] sm:w-[34rem] lg:w-[40rem]"
+                  : "w-[72vw] sm:w-[20rem] lg:w-[22rem]"
+              }`}
             >
               <figure className="card-border-gradient shadow-premium relative h-full overflow-hidden rounded-3xl">
-                <div className="aspect-[3/4] overflow-hidden bg-background-secondary">
+                {/* Uniform height, varying width — keeps the filmstrip aligned */}
+                <div className="h-[24rem] overflow-hidden bg-background-secondary sm:h-[26rem] lg:h-[30rem]">
                   <GalleryPhoto item={item} />
                 </div>
 
