@@ -1,5 +1,5 @@
 import type { LucideIcon } from "lucide-react";
-import { Medal, GraduationCap, Users, FolderGit2 } from "lucide-react";
+import { Medal, Briefcase, Users, FolderGit2 } from "lucide-react";
 
 export interface Achievement {
   icon: LucideIcon;
@@ -13,13 +13,13 @@ export const achievements: Achievement[] = [
     icon: Medal,
     value: "Gold Medal",
     label: "BCA — Presidency College",
-    detail: "Graduated first in the batch with a 9.54 GPA",
+    detail: "Graduated first in the batch across the programme",
   },
   {
-    icon: GraduationCap,
-    value: "9.32 GPA",
-    label: "MCA — CHRIST University",
-    detail: "Consistent academic excellence at the master's level",
+    icon: Briefcase,
+    value: "Adobe & EY",
+    label: "Internship experience",
+    detail: "Technical consulting at Adobe; full-stack engineering at EY GDS",
   },
   {
     icon: Users,

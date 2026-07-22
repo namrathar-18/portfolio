@@ -31,7 +31,7 @@ export const experience: ExperienceItem[] = [
     organization: "CHRIST (Deemed to be University), Bangalore",
     period: "2025 — Present",
     description:
-      "Pursuing MCA with a 9.32 GPA, focused on advanced software engineering, distributed systems, and cloud-native architecture.",
+      "Pursuing an MCA focused on advanced software engineering, distributed systems, and cloud-native architecture.",
     icon: GraduationCap,
     badge: "Education",
   },
@@ -40,7 +40,7 @@ export const experience: ExperienceItem[] = [
     organization: "Presidency College (Autonomous), Bangalore",
     period: "2022 — 2025",
     description:
-      "Graduated top of the batch as Gold Medalist with a 9.54 GPA — built a deep foundation in DSA, OOP, DBMS, operating systems, networks, and web development.",
+      "Graduated top of the batch as Gold Medalist, building a deep foundation in DSA, OOP, DBMS, operating systems, networks, and web development.",
     icon: Trophy,
     badge: "Gold Medal",
   },

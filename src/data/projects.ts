@@ -19,6 +19,8 @@ export interface Project {
   slug: string;
   title: string;
   subtitle: string;
+  /** Crisp one-liner shown on the card's reverse face */
+  summary?: string;
   description: string;
   /** Extra depth shown on featured cards */
   architecture?: string;
@@ -40,6 +42,8 @@ export const projects: Project[] = [
     slug: "fleettwin",
     title: "FleetTwin 3D",
     subtitle: "3D digital twin + AI ops copilot",
+    summary:
+      "A warehouse rendered as a live 3D twin — operational events stream onto it while ML forecasts demand and an AI copilot answers questions from real data.",
     description:
       "A real-time 3D digital twin of a warehouse: operational events stream onto a live Three.js scene while ML services forecast demand, flag anomalies, and optimize slotting — and an AI copilot answers questions by calling tools against live data, never fabricating numbers.",
     architecture:
@@ -63,6 +67,8 @@ export const projects: Project[] = [
     slug: "repoverse",
     title: "RepoVerse 3D",
     subtitle: "Codebases as living 3D cities",
+    summary:
+      "Paste any GitHub repo and explore it as a 3D city — buildings are files, height is complexity, and an AI copilot answers with cited file paths.",
     description:
       "Paste a GitHub repo URL and watch it render as a 3D city — buildings are files, height is complexity, heat is churn, red glow is risk. An AI copilot that has actually read the code answers architecture questions with cited file paths, lighting up the buildings it references.",
     architecture:
@@ -86,6 +92,8 @@ export const projects: Project[] = [
     slug: "fraudmesh",
     title: "FraudMesh",
     subtitle: "Real-time payment fraud detection",
+    summary:
+      "Scores every payment in under 100 ms, exposes mule rings with graph intelligence, and explains each blocked transaction in plain language.",
     description:
       "A streaming fraud platform that scores every payment in under 100 ms — rules plus LightGBM over a Redis online feature store — detects fraud rings with graph community detection, explains every block with SHAP, and gives analysts an AI copilot that narrates decisions in plain language.",
     architecture:
@@ -109,6 +117,8 @@ export const projects: Project[] = [
     slug: "messaging-platform",
     title: "Real-Time Messaging Platform",
     subtitle: "Production-grade chat infrastructure",
+    summary:
+      "Horizontally scalable chat on WebSockets — Redis pub/sub fans messages across server instances, secured with rotating JWT refresh tokens.",
     description:
       "A horizontally scalable messaging system with WebSocket transport, Redis pub/sub fan-out across server instances, JWT auth with rotating refresh tokens, and fully containerized deployment.",
     architecture:
@@ -131,7 +141,9 @@ export const projects: Project[] = [
   {
     slug: "musify",
     title: "Musify",
-    subtitle: "Music streaming app — built at EY",
+    subtitle: "Music streaming app, built at EY",
+    summary:
+      "A full-stack streaming app with 500+ cached tracks, playlists, likes and preview playback behind a polished player UI.",
     description:
       "Full-stack music streaming application with 500+ cached Spotify tracks, playlist management, likes, and 30-second preview streaming behind a polished player UI. Built during the EY GDS internship.",
     architecture:

@@ -10,7 +10,7 @@ export function Education() {
         <SectionHeading
           eyebrow="Education"
           title="Academic foundation"
-          description="Two computer-applications degrees, one gold medal, and a consistent record at the top of the class."
+          description="Two computer-applications degrees and a consistent record at the top of the class."
         />
 
         <div className="mx-auto grid max-w-4xl gap-5 md:grid-cols-2">
@@ -27,15 +27,13 @@ export function Education() {
                   <span className="glass flex h-12 w-12 items-center justify-center rounded-2xl">
                     <GraduationCap className="h-5 w-5 text-accent" aria-hidden />
                   </span>
-                  <div className="text-right">
-                    <p className="font-display text-3xl font-bold text-foreground">{item.score}</p>
-                    <p className="text-[11px] uppercase tracking-wider text-muted-foreground">{item.scoreLabel}</p>
-                  </div>
+                  <p className="rounded-full border border-white/10 bg-white/[0.03] px-3 py-1 text-[11px] font-medium text-muted-foreground">
+                    {item.period}
+                  </p>
                 </div>
 
                 <h3 className="text-lg font-semibold leading-snug text-foreground">{item.degree}</h3>
                 <p className="mt-1 text-sm font-medium text-accent-soft">{item.institution}</p>
-                <p className="mt-1 text-xs text-muted-foreground">{item.period}</p>
 
                 {item.honors && (
                   <p className="mt-4 inline-flex items-center gap-2 self-start rounded-full border border-accent/30 bg-accent/10 px-3.5 py-1.5 text-xs font-semibold text-accent-soft">

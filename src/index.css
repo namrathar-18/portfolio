@@ -171,6 +171,16 @@
     opacity: 1;
   }
 
+  /* Horizontal scrollers keep the gesture, lose the scrollbar chrome */
+  .hide-scrollbar {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
   /* Huge editorial index numbers */
   .index-number {
     font-family: "Space Grotesk", sans-serif;
