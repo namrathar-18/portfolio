@@ -61,6 +61,7 @@ export function Gallery() {
 
   return (
     <section id="moments" className="section-padding relative overflow-hidden">
+      <div className="bg-halo absolute inset-x-0 top-0 h-96" aria-hidden />
       <div className="container relative">
         <SectionHeading
           eyebrow="Moments"

@@ -6,7 +6,8 @@ import { education } from "@/data/education";
 export function Education() {
   return (
     <section id="education" className="section-padding relative">
-      <div className="container">
+      <div className="bg-halo absolute inset-x-0 top-0 h-96" aria-hidden />
+      <div className="container relative">
         <SectionHeading
           eyebrow="Education"
           title="Academic foundation"
